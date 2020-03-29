@@ -1,10 +1,10 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var prefix = "+";
+var prefix = ".";
 
 client.on("message", message => {
 
-if (message.content.startsWith(prefix + "dm")) {
+if (message.content.startsWith(prefix . "dm")) {
 if (!message.member.hasPermission("ADMINISTRATOR"))  return;
 let args = message.content.split(" ").slice(1);
 var argresult = args.join(' '); 
@@ -20,9 +20,9 @@ var argresult = args.join(' ');
 client.on('ready',()=>{
     console.log(' Bot is online now!');
     let statuses = [
-        "  STATUS HERE ",
-        "  STATUS HERE ",
-        "  STATUS HERE " // U can add another
+        "  H4PPYS Helper ",
+        "  Version 2.0 ",
+        "  Made By H4PPY " // U can add another
         
     ]
     setInterval(function(){
@@ -35,4 +35,4 @@ client.on('ready',()=>{
 
 });
 
-client.login("YOUR TOKEN HERE");
+client.login("NjkzNjgxMzY5NTc3OTQ3MjQ3.XoAnXw.B6W78-j_qv_vJSCvjiGvoBKbf_w");
