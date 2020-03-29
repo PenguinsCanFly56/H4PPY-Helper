@@ -1,9 +1,37 @@
-const { rollDice } = require('../../utils/dicefn');
+const Discord = require('../../utils/discord.js');
 
-module.exports = {
-    run: async(client, message) => {
-        message.reply("rolled a " + rollDice());
-    },
-    aliases: ['dice', 'rolldice'],
-    description: 'Rolls the dice'
-}
+const client = new Discord.Client();
+var prefix = "?";
+
+client.on("message", message => {
+
+if (message.content.startsWith(prefix ? "dm")) {
+if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+let args = message.content.split(" ").slice(1);
+var argresult = args.join(' '); 
+  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+ m.send(`${argresult}\n ${m}`);
+})
+ message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` **MESSAGE SENT** `); 
+ message.delete(); 
+};     
+});
+
+
+client.on('ready',()=>{
+    console.log(' Bot is online now!');
+    let statuses = [
+        "  H4PPY'S Helper ",
+        "  Version 2.0 ",
+        "  Made By H4PPY " // U can add another
+        
+    ]
+    setInterval(function(){
+            let status = statuses[Math.floor(Math.random() * statuses.length)];
+            client.user.setActivity(status, {type:"PLAYING"})
+    
+        }, 3000) //Seconds to Random
+
+
+
+});
